@@ -76,6 +76,8 @@ function addOrder() {
   }
 
   total.value = "Total: php " + totalPrice.toFixed(2); // Update total input field
+
+  calculateChange(); // Calculate change after updating the total
 }
 
 // Function to calculate change when cash amount is entered
