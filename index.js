@@ -1,3 +1,6 @@
+// index.js
+
+// Selecting elements from the DOM
 var product1 = document.getElementById("product1");
 var qty1 = document.getElementById("qty1");
 var price1 = document.getElementById("price1");
@@ -11,8 +14,9 @@ var total = document.getElementById("total");
 var cash = document.getElementById("cash");
 var change = document.getElementById("change");
 
+// Function to add orders to the textarea and calculate total
 function addOrder() {
-  carts.textContent = "";
+  carts.textContent = ""; // Clear previous orders
   var totalPrice = 0;
 
   if (parseFloat(qty1.value) > 0) {
@@ -27,9 +31,10 @@ function addOrder() {
     totalPrice += parseFloat(qty2.value) * parseFloat(price2.textContent);
   }
 
-  total.textContent = "Total: php " + totalPrice.toFixed(2);
+  total.value = "Total: php " + totalPrice.toFixed(2); // Update total input field
 }
 
+// Function to calculate change when cash amount is entered
 function calculateChange() {
   var totalPrice = 0;
 
@@ -45,12 +50,13 @@ function calculateChange() {
   var changeAmount = cashAmount - totalPrice;
 
   if (changeAmount >= 0) {
-    change.textContent = "Change: php " + changeAmount.toFixed(2);
+    change.value = "Change: php " + changeAmount.toFixed(2); // Update change input field
   } else {
-    change.textContent = "Insufficient cash provided";
+    change.value = "Insufficient cash provided";
   }
 }
 
+// Event listeners for keyup events on quantity inputs and cash input
 qty1.addEventListener("keyup", addOrder);
 qty2.addEventListener("keyup", addOrder);
 cash.addEventListener("keyup", calculateChange);
