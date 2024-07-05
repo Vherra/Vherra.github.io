@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var cash = document.getElementById("cash");
   var change = document.getElementById("change");
 
-  // Function to update total and display orders
+  // Function to update total and change
   function updateOrder() {
     var qty1Val = parseFloat(qty1.value);
     var qty2Val = parseFloat(qty2.value);
