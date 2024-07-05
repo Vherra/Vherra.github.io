@@ -14,12 +14,12 @@ var change = document.getElementById("change")
 function addOrder(){
   carts.textContent=""
   if (parseFloat(qty1.value) > 0){
-     var order= qty1.value.toString() + ' pc/s x ' + price1.textContent + '-----------' + product1.textContent + '------- php' + (parseFloat(qty1.value)*parseFloat(price1.textContent
+     var order= qty1.value.toString() + ' pc/s x ' + price1.textContent + '-----------' + product1.textContent + '------- php' + (parseFloat(qty1.value)*parseFloat(price1.textContent)) + '\n'
      //carts.textContent += carts.value.toString() + "\n";                                                                                                                                                                
      cart.textContent += order
   }
   if (parseFloat(qty2.value) > 0){
-     var order= qty2.value.toString() + ' pc/s x ' + price2.textContent + '-----------' + product2.textContent + '------- php' + (parseFloat(qty2.value)*parseFloat(price2.textContent
+     var order= qty2.value.toString() + ' pc/s x ' + price2.textContent + '-----------' + product2.textContent + '------- php' + (parseFloat(qty2.value)*parseFloat(price2.textContent)) + '\n'
      //carts.textContent += carts.value.toString() + "\n";                                                                                                                                                                
      cart.textContent += order
   }    
