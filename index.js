@@ -33,85 +33,43 @@ function addOrder() {
   carts.textContent = ""; // Clear previous orders
   var totalPrice = 0;
 
-  // Product 1
-  if (parseFloat(qty1.value) > 0) {
-    var order = qty1.value.toString() + ' pc/s x ' + price1.textContent + ' ----------- ' + product1.textContent + ' ------- php ' + (parseFloat(qty1.value) * parseFloat(price1.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty1.value) * parseFloat(price1.textContent);
+  // Helper function to add a product to the order
+  function addProductOrder(product, qty, price) {
+    if (parseFloat(qty.value) > 0) {
+      var order = `${qty.value} pc/s x ${price.textContent} ----------- ${product.textContent} ------- php ${(parseFloat(qty.value) * parseFloat(price.textContent)).toFixed(2)}\n`;
+      carts.textContent += order;
+      totalPrice += parseFloat(qty.value) * parseFloat(price.textContent);
+    }
   }
 
-  // Product 2
-  if (parseFloat(qty2.value) > 0) {
-    var order = qty2.value.toString() + ' pc/s x ' + price2.textContent + ' ----------- ' + product2.textContent + ' ------- php ' + (parseFloat(qty2.value) * parseFloat(price2.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty2.value) * parseFloat(price2.textContent);
-  }
+  // Add each product to the order
+  addProductOrder(product1, qty1, price1);
+  addProductOrder(product2, qty2, price2);
+  addProductOrder(product3, qty3, price3);
+  addProductOrder(product4, qty4, price4);
+  addProductOrder(product5, qty5, price5);
+  addProductOrder(product6, qty6, price6);
 
-  // Product 3
-  if (parseFloat(qty3.value) > 0) {
-    var order = qty3.value.toString() + ' pc/s x ' + price3.textContent + ' ----------- ' + product3.textContent + ' ------- php ' + (parseFloat(qty3.value) * parseFloat(price3.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty3.value) * parseFloat(price3.textContent);
-  }
-
-  // Product 4
-  if (parseFloat(qty4.value) > 0) {
-    var order = qty4.value.toString() + ' pc/s x ' + price4.textContent + ' ----------- ' + product4.textContent + ' ------- php ' + (parseFloat(qty4.value) * parseFloat(price4.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty4.value) * parseFloat(price4.textContent);
-  }
-
-  // Product 5
-  if (parseFloat(qty5.value) > 0) {
-    var order = qty5.value.toString() + ' pc/s x ' + price5.textContent + ' ----------- ' + product5.textContent + ' ------- php ' + (parseFloat(qty5.value) * parseFloat(price5.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty5.value) * parseFloat(price5.textContent);
-  }
-
-  // Product 6
-  if (parseFloat(qty6.value) > 0) {
-    var order = qty6.value.toString() + ' pc/s x ' + price6.textContent + ' ----------- ' + product6.textContent + ' ------- php ' + (parseFloat(qty6.value) * parseFloat(price6.textContent)) + '\n';
-    carts.textContent += order;
-    totalPrice += parseFloat(qty6.value) * parseFloat(price6.textContent);
-  }
-
-  total.value = "Total: php " + totalPrice.toFixed(2); // Update total input field
+  total.value = `Total: php ${totalPrice.toFixed(2)}`; // Update total input field
 
   calculateChange(); // Calculate change after updating the total
 }
 
 // Function to calculate change when cash amount is entered
 function calculateChange() {
-  var totalPrice = 0;
-
-  // Calculate total price
-  if (parseFloat(qty1.value) > 0) {
-    totalPrice += parseFloat(qty1.value) * parseFloat(price1.textContent);
-  }
-  if (parseFloat(qty2.value) > 0) {
-    totalPrice += parseFloat(qty2.value) * parseFloat(price2.textContent);
-  }
-  if (parseFloat(qty3.value) > 0) {
-    totalPrice += parseFloat(qty3.value) * parseFloat(price3.textContent);
-  }
-  if (parseFloat(qty4.value) > 0) {
-    totalPrice += parseFloat(qty4.value) * parseFloat(price4.textContent);
-  }
-  if (parseFloat(qty5.value) > 0) {
-    totalPrice += parseFloat(qty5.value) * parseFloat(price5.textContent);
-  }
-  if (parseFloat(qty6.value) > 0) {
-    totalPrice += parseFloat(qty6.value) * parseFloat(price6.textContent);
-  }
-
-  // Calculate change
+  var totalPrice = parseFloat(total.value.replace('Total: php ', ''));
   var cashAmount = parseFloat(cash.value);
-  var changeAmount = cashAmount - totalPrice;
 
-  if (changeAmount >= 0) {
-    change.value = "Change: php " + changeAmount.toFixed(2); // Update change input field
+  if (!isNaN(totalPrice) && !isNaN(cashAmount)) {
+    var changeAmount = cashAmount - totalPrice;
+
+    if (changeAmount >= 0) {
+      change.value = `Change: php ${changeAmount.toFixed(2)}`; // Update change input field
+    } else {
+      change.value = "Insufficient cash provided";
+    }
   } else {
-    change.value = "Insufficient cash provided";
+    change.value = ""; // Clear change field if inputs are not valid numbers
   }
 }
 
