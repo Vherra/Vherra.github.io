@@ -1,9 +1,28 @@
-const btnLike1 = document.getElementById("btnLike1")
-const count1 = document.getElementById("count1")
+var product1 = document.getElementById("product1")
+var qty1 = document.getElementById("qty1")
+var price1 = document.getElementById("price1")
 
-function countLike1() {
-  let likeCounts = parseInt(count1.value) + 1
-  count1.textContent = likeCounts.toString()
-}
+var product2 = document.getElementById("product2")
+var qty2 = document.getElementById("qty2")
+var price2 = document.getElementById("price2")
 
-btnLike1.addEventListener("click", countLike1)
+var carts = document.getElementById("carts")
+var total = document.getElementById("total")
+var cash = document.getElementById("cash")
+var change = document.getElementById("change")
+
+function addOrder(){
+  carts.textContent=""
+  if (parseFloat(qty1.value) > 0){
+     var order= qty1.value.toString() + ' pc/s x ' + price1.textContent + '-----------' + product1.textContent + '------- php' + (parseFloat(qty1.value)*parseFloat(price1.textContent
+     //carts.textContent += carts.value.toString() + "\n";                                                                                                                                                                
+     cart.textContent += order
+  }
+  if (parseFloat(qty2.value) > 0){
+     var order= qty2.value.toString() + ' pc/s x ' + price2.textContent + '-----------' + product2.textContent + '------- php' + (parseFloat(qty2.value)*parseFloat(price2.textContent
+     //carts.textContent += carts.value.toString() + "\n";                                                                                                                                                                
+     cart.textContent += order
+  }    
+}                                                                                                                                                                   
+qty1.addEventListener("keyup", addOrder);                                                                                                                                                                           
+qty2.addEventListener("keyup", addOrder);                                                                                                                                                                     
