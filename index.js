@@ -76,7 +76,7 @@ function calculateChange() {
     var totalAmount = parseFloat(total.value.replace("Php ", ""));
     var cashAmount = parseFloat(cash.value);
     if (cashAmount >= totalAmount) {
-        change.value = "Php " + (cashAmount - totalAmount).toFixed(2);
+        change.value = " " + (cashAmount - totalAmount).toFixed(2);
     } else {
         change.value = "Insufficient Cash";
     }
