@@ -71,7 +71,7 @@ function calculateChange() {
     let cashTendered = parseFloat(cash.value);
     if (!isNaN(totalPrice) && !isNaN(cashTendered) && cashTendered >= totalPrice) {
         let changeAmount = cashTendered - totalPrice;
-        change.value = '₱ ' + changeAmount.toFixed(2);
+        change.value = '₱' + changeAmount.toFixed(2);
     } else {
         change.value = '';
     }
