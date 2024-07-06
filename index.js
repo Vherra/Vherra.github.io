@@ -62,12 +62,12 @@ function addOrder(){
         totalPrice += parseFloat(qty6.value) * parseFloat(price6.textContent);
     }
 
-    total.value = '₱ ' + totalPrice.toFixed(2);
+    total.value = '₱' + totalPrice.toFixed(2);
     calculateChange();
 }
 
 function calculateChange() {
-    let totalPrice = parseFloat(total.value.replace('₱ ', ''));
+    let totalPrice = parseFloat(total.value.replace('₱', ''));
     let cashTendered = parseFloat(cash.value);
     if (!isNaN(totalPrice) && !isNaN(cashTendered) && cashTendered >= totalPrice) {
         let changeAmount = cashTendered - totalPrice;
