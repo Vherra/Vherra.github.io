@@ -73,7 +73,7 @@ function addOrder() {
 }
 
 function calculateChange() {
-    var totalAmount = parseFloat(total.value.replace("Php ", ""));
+    var totalAmount = parseFloat(total.value.replace(" ", ""));
     var cashAmount = parseFloat(cash.value);
     if (cashAmount >= totalAmount) {
         change.value = " " + (cashAmount - totalAmount).toFixed(2);
